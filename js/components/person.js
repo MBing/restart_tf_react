@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { PureComponent} from 'react';
 
-export default function Person() {
-  const name = 'Derek Zoolander';
-  const imageUrl = 'https://scontent.cdninstagram.com/t51.2885-19/11377856_626372960798542_1396263462_a.jpg';
-  const job = 'Male model';
-  
-  return (
-    <div className="person">
-      <div className="person-name">{name}</div>
-      <img className="person-img" src={imageUrl} />
-      <div className="person-job">
-        {job}
+export default class Person extends PureComponent {
+  render() {
+    return (
+      <div className="person">
+        <div className="person-name">{this.props.name}</div>
+        <img className="person-img" src={this.props.imageUrl} />
+        <div className="person-job">
+          {this.props.job}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+Person.defaultProps = {
+  imageUrl: 'http://www.gravatar.com/avatar/?d=identicon'
+};
